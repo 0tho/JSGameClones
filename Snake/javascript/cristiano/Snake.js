@@ -103,6 +103,7 @@
         };
         this.draw = function()
         {
+            
             body.draw();
         };
         this.init = function()
