@@ -7,18 +7,24 @@
 	}
 
     function SnakeGame () {
-    	this.snake = new SnakeHead(),
-    	this.food = new Food()
+    	this.snake = new SnakeHead();
+    	this.food = new Food();
+    	this.gameOver = false;
     }
 
  	
     SnakeGame.prototype.update = function () {
     	this.checkInput();
-    	food.update();
-    	snake.update();
+    	if(!gameOver)
+    	{
+			food.update();
+    		snake.update();
+    	}
     };
 
     SnakeGame.prototype.draw = function () {
+    	//if(gameOver)
+
     	food.draw();
 		snake.draw();
     };
@@ -27,29 +33,43 @@
     	// Process inputs
     	var direction = null;
 
-		if(Keyboard.isDown(ARROWS_KEYCODES.left))
+		if(!gameOver)
+		{
+			if(Keyboard.isDown(ARROWS_KEYCODES.left))
 			direction = DIRECTION.LEFT;
-		else if(Keyboard.isDown(ARROWS_KEYCODES.right))
-			direction = DIRECTION.RIGHT;
-		else if(Keyboard.isDown(ARROWS_KEYCODES.down))
-			direction = DIRECTION.DOWN;
-		else if(Keyboard.isDown(ARROWS_KEYCODES.up))
-			direction = DIRECTION.UP;
+			else if(Keyboard.isDown(ARROWS_KEYCODES.right))
+				direction = DIRECTION.RIGHT;
+			else if(Keyboard.isDown(ARROWS_KEYCODES.down))
+				direction = DIRECTION.DOWN;
+			else if(Keyboard.isDown(ARROWS_KEYCODES.up))
+				direction = DIRECTION.UP;
 
-		if(direction != null)
-    		snake.changeDirection(direction);
+			
+			if(direction != null)
+	    		snake.changeDirection(direction);
+		}
+		else if(Keyboard.isDown(27))
+		{
+			// ESC key was pressed
+			// Reset game
+			this.init();
+		}
+		
+
 
     };
 
     SnakeGame.prototype.init = function () {
+    	gameOver = false;
     	snake.init();
     	food.init();
     };
 
-    SnakeGame.prototype.gameOver = function () 
+    SnakeGame.prototype.gameIsOver = function () 
     {
     	// I have to figure out how this PAUSED state from the GameMachine works
-    	window.GameMachine = STATES.PAUSED;
+    	//window.GameMachine = STATES.PAUSED;
+    	this.gameOver = true;
     };
 
     window.SnakeGame = SnakeGame;
