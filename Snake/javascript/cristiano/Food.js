@@ -7,7 +7,7 @@
     	this.update = function()
     	{
     		elapsedTime++;
-    		
+
     		if(elapsedTime >= TIMEOUT_FOOD)
     			this.generateFood();
 
@@ -19,8 +19,19 @@
 
     	this.generateFood = function()
     	{
-    		this.X = getRandomInt(0,GameMachine.width);
-    		this.Y = getRandomInt(0,GameMachine.height);;
+    		var randomX,randomY;
+    		var inSnake = true;
+
+    		while(inSnake)
+    		{
+    			// Implement that later
+    			randomX = getRandomInt(0,GameMachine.width); 
+    			randomY = getRandomInt(0,GameMachine.height);
+    			inSnake = false;
+    		}
+
+    		this.X = randomX;
+    		this.Y = randomY;
     		this.elapsedTime = 0;
     	};
     	this.init = function(){
