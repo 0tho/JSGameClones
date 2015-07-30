@@ -1,92 +1,120 @@
 (function () {
 
-    function SnakeGame () {
-    	this.snake = new SnakeHead(),
-    	this.food = new Food()
-    }
+    var SIZE_SNAKE = 8;
 
- 	function SnakeBody () {
-		this.next = null;
-    	this.direction = "left";
-    	this.X = ;
-    	this.Y = ;
-    	this.update = function()
-    	{
-    		if(this.next != null)
-    			next.update();
-    	};
-    	this.draw = function()
-    	{
-    		if(this.next != null)
-    			next.draw();
-    	};
-    	this.increase = function()
-    	{
-    		if(next != null)
-    			next.increase();
-    		else
-    		{
-    			next = new SnakeBody();
-    		}
-    	};
+    function SnakeBody (initialX,initialY,previous) {
+        this.next = null;
+        this.prev = previous;
+        this.direction = previous.direction;
+        this.lastDirection = previous.direction;
+        this.X = initialX;
+        this.Y = initialY;
+        this.update = function()
+        {
+            // Next element will get direction from before the update
+            this.lastDirection = this.direction;
+            this.direction = prev.direction;
+
+            switch(this.direction)
+            {
+                case DIRECTION.RIGHT:
+
+                break;
+                case DIRECTION.LEFT:
+                break;
+                case DIRECTION.UP:
+                break;
+                case DIRECTION.DOWN:
+                break;
+                default:
+                break;
+            }
+
+            if(this.next != null)
+                next.update();
+        };
+        this.draw = function()
+        {
+            if(this.next != null)
+                next.draw();
+        };
+        this.increase = function()
+        {
+            if(next != null)
+                next.increase();
+            else
+            {
+                switch(this.direction)
+                {
+                    case DIRECTION.RIGHT:
+                        next = new SnakeBody(this.X - SIZE_SNAKE,this.Y,this);
+                    break;
+                    case DIRECTION.LEFT:
+                        next = new SnakeBody(this.X + SIZE_SNAKE,this.Y,this);
+                    break;
+                    case DIRECTION.UP:
+                        next = new SnakeBody(this.X,this.Y - SIZE_SNAKE,this);
+                    break;
+                    case DIRECTION.DOWN:
+                        next = new SnakeBody(this.X,this.Y + SIZE_SNAKE,this);
+                    break;
+                    default:
+                        next = new SnakeBody(this.X - SIZE_SNAKE,this.Y,this);
+                    break;
+                }
+            }
+                
+
+        };
     }
 
     function SnakeHead () {
-    	this.body = new SnakeBody();
-    	this.direction = "left";
-    	this.X = ;
-    	this.Y = ;
-    	this.update = function()
-    	{
-    		body.update();
-    	};
-    	this.draw = function()
-    	{
-    		body.draw();
-    	};
-    	this.init = function()
-    	{
-    		body.increase();
-    	};
+        this.body = null;
+        this.direction = DIRECTION.RIGHT;
+        this.lastDirection = DIRECTION.RIGHT;
+        this.X = 2;
+        this.Y = 2;
+        this.update = function()
+        {
+            switch(this.direction)
+            {
+                case DIRECTION.RIGHT:
+                break;
+                case DIRECTION.LEFT:
+                break;
+                case DIRECTION.UP:
+                break;
+                case DIRECTION.DOWN:
+                break;
+                default:
+                break;
+            }
 
-    	this.checkCollision = function(){};
-    	this.changeDirection = function(){};
-    	this.isEatingFood = function(){ return false;};
+            body.update();
+        };
+        this.draw = function()
+        {
+            body.draw();
+        };
+        this.init = function()
+        {
+            this.X = 2;
+            this.Y = 2;
+            this.direction = DIRECTION.RIGHT;
+            this.lastDirection = DIRECTION.RIGHT;
+
+            // Setting first element from body, and increasing its size to get 3 blocks in the beginning of the game
+            this.body = new SnakeBody();
+            this.body.increase();
+        };
+
+        this.checkCollision = function(){};
+        this.changeDirection = function(updatedDirection)
+        { 
+            this.lastDirection = this.direction;
+            this.direction = updatedDirection
+
+        };
+        this.isEatingFood = function(){ return false;};
     }
-
-    function Food () {
-    	this.X = ;
-    	this.Y = ;
-    	this.elapsedTime = ;
-    	this.update = function(){};
-    	this.draw = function(){};
-    	this.generateFood = function(){};
-    	this.init = function(){};
-    }
-
-    SnakeGame.prototype.update = function () {
-    	food.update();
-    	snake.update();
-    };
-
-    SnakeGame.prototype.draw = function () {
-    	food.draw();
-		snake.draw();
-    };
-
-  	SnakeGame.prototype.checkInput = function () {
-    	// Process inputs
-
-    	snake.changeDirection(direction);
-    };
-
-    SnakeGame.prototype.init = function () {
-    	snake.init();
-    	food.init();
-    };
-
-    SnakeGame.prototype.gameOver = function () {
-    };
-
-    window.SnakeGame = SnakeGame;
 })();
