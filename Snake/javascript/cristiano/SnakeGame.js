@@ -1,4 +1,10 @@
 (function () {
+	var ARROWS_KEYCODES = {
+		"left": 37,
+		"up": 38, 
+		"right": 39, 
+		"down": 40
+	}
 
     function SnakeGame () {
     	this.snake = new SnakeHead(),
@@ -7,6 +13,7 @@
 
  	
     SnakeGame.prototype.update = function () {
+    	this.checkInput();
     	food.update();
     	snake.update();
     };
@@ -18,7 +25,19 @@
 
   	SnakeGame.prototype.checkInput = function () {
     	// Process inputs
-    	snake.changeDirection(direction);
+    	var direction = null;
+
+		if(Keyboard.isDown(ARROWS_KEYCODES.left))
+			direction = DIRECTION.LEFT;
+		else if(Keyboard.isDown(ARROWS_KEYCODES.right))
+			direction = DIRECTION.RIGHT;
+		else if(Keyboard.isDown(ARROWS_KEYCODES.down))
+			direction = DIRECTION.DOWN;
+		else if(Keyboard.isDown(ARROWS_KEYCODES.up))
+			direction = DIRECTION.UP;
+
+		if(direction != null)
+    		snake.changeDirection(direction);
 
     };
 
