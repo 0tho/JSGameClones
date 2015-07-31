@@ -1,12 +1,13 @@
 (function () {
 
     var
-    game = new Snake(),
+    game = new SnakeGame(),
     cfg = {
         width: 800,
         height: 800,
         fps: 60
     },
     gameMachine = new GameMachine( game, cfg, '.gameStage' );
+    gameMachine.init();
 
 })();

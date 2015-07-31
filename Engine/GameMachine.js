@@ -5,7 +5,7 @@
 		STOPPED: 1,
 		PAUSED: 2
 	};
-	
+
 	function GameMachine ( game, cfg, selector ) {
 
 		this.game = game;
@@ -47,14 +47,14 @@
 		this.accumulator = 0;
 		this.state = STATES.PLAYING;
 
-		this.step = step.bind(this);	
-		
-	}
-	
-	GameMachine.prototype.start = function () {
-		this.step();
+		this.step = step.bind(this);
+
 	}
 
+	GameMachine.prototype.start = function () {
+		this.step();
+	};
+
 	window.GameMachine = GameMachine;
-	
+
 })();

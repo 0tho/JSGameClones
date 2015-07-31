@@ -1,15 +1,15 @@
 (function () {
 
-    function Snake () {
+    function SnakeGame () {
 
     }
 
-    Snake.prototype.update = function () {
+    SnakeGame.prototype.update = function () {
 
     };
 
-    Snake.prototype.draw = function () {
+    SnakeGame.prototype.draw = function () {
     };
 
-    window.Snake = Snake;
+    window.SnakeGame = SnakeGame;
 })();
