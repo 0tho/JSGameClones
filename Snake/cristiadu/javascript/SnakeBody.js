@@ -43,6 +43,8 @@
     
     SnakeBody.prototype.draw = function(ctx,dt)
     {
+        ctx.fillStyle = '#00FF00';
+        ctx.fillRect( this.X, this.Y, SIZE_SNAKE, SIZE_SNAKE);
         if(this.next != null)
             next.draw(ctx,dt);
     };

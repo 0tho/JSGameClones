@@ -19,9 +19,10 @@
 
     };
 
-    Food.prototype.draw = function()
+    Food.prototype.draw = function(ctx,dt)
     {
-
+        ctx.fillStyle = '#FF0000';
+        ctx.fillRect( this.X, this.Y, FOOD_SIZE, FOOD_SIZE);
     };
 
     Food.prototype.generateFood = function()

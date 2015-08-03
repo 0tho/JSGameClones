@@ -1,4 +1,6 @@
 (function () {
+      var SIZE_SNAKE = 8;
+
     function SnakeHead () {
         this.body = null;
         this.direction = DIRECTION.RIGHT;
@@ -34,8 +36,9 @@
 
     SnakeHead.prototype.draw = function(ctx,dt)
     {
-        
-        body.draw(ctx,dt);
+        ctx.fillStyle = '#00AA00';
+        ctx.fillRect( this.X, this.Y, SIZE_SNAKE, SIZE_SNAKE);
+        body.draw(ctx,dt);  
     };
 
     SnakeHead.prototype.init = function()

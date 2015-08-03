@@ -6,7 +6,9 @@
 		"down": 40
 	}
 
-    function SnakeGame () {
+    function SnakeGame (w,h) {
+        this.wid = w;
+        this.hei = h;
     	this.snake = new SnakeHead();
     	this.food = new Food();
     	this.gameOver = false;
@@ -23,7 +25,8 @@
     };
 
     SnakeGame.prototype.draw = function (ctx,dt) {
-
+        ctx.fillStyle = '#000';
+        ctx.fillRect( 0, 0, this.wid, this.hei);
     	food.draw(ctx,dt);
 		snake.draw(ctx,dt);
     };
