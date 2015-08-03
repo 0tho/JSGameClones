@@ -24,7 +24,7 @@
     {
         // Next element will get direction from before the update
         this.lastDirection = this.direction;
-        this.direction = prev.lastDirection;
+        this.direction = this.prev.lastDirection;
 
         switch(this.direction)
         {
@@ -46,7 +46,7 @@
         }
 
         if(this.next != null)
-            next.update();
+            this.next.update();
     };
     
     SnakeBody.prototype.draw = function(ctx,dt)
@@ -54,33 +54,35 @@
         ctx.fillStyle = '#00FF00';
         ctx.fillRect( this.X, this.Y, SIZE_SNAKE, SIZE_SNAKE);
         if(this.next != null)
-            next.draw(ctx,dt);
+            this.next.draw(ctx,dt);
     };
     
     SnakeBody.prototype.increase = function()
     {
-        if(next != null)
-            next.increase();
+        if(this.next != null)
+            this.next.increase();
         else
         {
             switch(this.direction)
             {
                 case DIRECTION.RIGHT:
-                    next = new SnakeBody(this.X - SIZE_SNAKE,this.Y,this);
+                    this.next = new SnakeBody(this.X - SIZE_SNAKE,this.Y,this);
                 break;
                 case DIRECTION.LEFT:
-                    next = new SnakeBody(this.X + SIZE_SNAKE,this.Y,this);
+                    this.next = new SnakeBody(this.X + SIZE_SNAKE,this.Y,this);
                 break;
                 case DIRECTION.UP:
-                    next = new SnakeBody(this.X,this.Y - SIZE_SNAKE,this);
+                    this.next = new SnakeBody(this.X,this.Y - SIZE_SNAKE,this);
                 break;
                 case DIRECTION.DOWN:
-                    next = new SnakeBody(this.X,this.Y + SIZE_SNAKE,this);
+                    this.next = new SnakeBody(this.X,this.Y + SIZE_SNAKE,this);
                 break;
                 default:
-                    next = new SnakeBody(this.X - SIZE_SNAKE,this.Y,this);
+                    this.next = new SnakeBody(this.X - SIZE_SNAKE,this.Y,this);
                 break;
             }
+
+            console.log("im here");
         }
             
 

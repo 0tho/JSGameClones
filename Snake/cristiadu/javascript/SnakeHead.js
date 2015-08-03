@@ -39,14 +39,14 @@
             break;
         }
 
-        body.update();
+        this.body.update();
     };
 
     SnakeHead.prototype.draw = function(ctx,dt)
     {
         ctx.fillStyle = '#00AA00';
         ctx.fillRect( this.X, this.Y, SIZE_SNAKE, SIZE_SNAKE);
-        body.draw(ctx,dt);  
+        this.body.draw(ctx,dt);  
     };
 
     SnakeHead.prototype.init = function()
@@ -57,7 +57,7 @@
         this.lastDirection = DIRECTION.RIGHT;
 
         // Setting first element from body, and increasing its size to get 3 blocks in the beginning of the game
-        this.body = new SnakeBody();
+        this.body = new SnakeBody(this.X - SIZE_SNAKE,this.Y,this);
         this.body.increase();
     };
 

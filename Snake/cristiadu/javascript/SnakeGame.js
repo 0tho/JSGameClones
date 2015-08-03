@@ -6,6 +6,14 @@
 		"down": 40
 	}
 
+      // Declaring the directions constant
+    var DIRECTION = {
+    UP: 'Up',
+    DOWN: 'Down',
+    LEFT: 'Left',
+    RIGHT: 'Right'
+    };
+
     function SnakeGame (w,h) {
         this.wid = w;
         this.hei = h;
@@ -17,6 +25,7 @@
  	
     SnakeGame.prototype.update = function () {
     	this.checkInput();
+
     	if(!this.gameOver)
     	{
 			this.food.update();
@@ -37,6 +46,7 @@
 
 		if(!this.gameOver)
 		{
+
 			if(Keyboard.isDown(ARROWS_KEYCODES.left))
                 direction = DIRECTION.LEFT;
 			else if(Keyboard.isDown(ARROWS_KEYCODES.right))
@@ -46,7 +56,6 @@
 			else if(Keyboard.isDown(ARROWS_KEYCODES.up))
 				direction = DIRECTION.UP;
 
-			
 			if(direction != null)
 	    		this.snake.changeDirection(direction);
 		}

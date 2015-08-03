@@ -12,9 +12,9 @@
 
     Food.prototype.update = function()
     {
-        elapsedTime++;
+        this.elapsedTime++;
 
-        if(elapsedTime >= TIMEOUT_FOOD)
+        if(this.elapsedTime >= TIMEOUT_FOOD)
             this.generateFood();
 
     };
@@ -33,8 +33,8 @@
         while(inSnake)
         {
             // Implement that later
-            randomX = getRandomInt(0,GameMachine.width); 
-            randomY = getRandomInt(0,GameMachine.height);
+            randomX = Util.getRandomInt(0,GameMachine.width); 
+            randomY = Util.getRandomInt(0,GameMachine.height);
             inSnake = false;
         }
 
