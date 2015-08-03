@@ -41,10 +41,10 @@
             next.update();
     };
     
-    SnakeBody.prototype.draw = function()
+    SnakeBody.prototype.draw = function(ctx,dt)
     {
         if(this.next != null)
-            next.draw();
+            next.draw(ctx,dt);
     };
     
     SnakeBody.prototype.increase = function()

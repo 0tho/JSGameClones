@@ -22,10 +22,10 @@
     	}
     };
 
-    SnakeGame.prototype.draw = function () {
+    SnakeGame.prototype.draw = function (ctx,dt) {
 
-    	food.draw();
-		snake.draw();
+    	food.draw(ctx,dt);
+		snake.draw(ctx,dt);
     };
 
   	SnakeGame.prototype.checkInput = function () {

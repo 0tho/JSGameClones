@@ -32,10 +32,10 @@
         body.update();
     };
 
-    SnakeHead.prototype.draw = function()
+    SnakeHead.prototype.draw = function(ctx,dt)
     {
         
-        body.draw();
+        body.draw(ctx,dt);
     };
 
     SnakeHead.prototype.init = function()
