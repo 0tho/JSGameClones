@@ -64,4 +64,5 @@
     
     SnakeHead.prototype.isEatingFood = function(){ return false;};
 
+    window.SnakeHead = SnakeHead;
 })();

@@ -78,4 +78,6 @@
 
     };
 
+
+    window.SnakeBody = SnakeBody;
 })();

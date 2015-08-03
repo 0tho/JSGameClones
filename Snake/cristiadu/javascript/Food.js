@@ -47,4 +47,5 @@
         this.generateFood();
     };
 
+    window.Food = Food;
 })();
