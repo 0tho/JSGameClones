@@ -2,6 +2,14 @@
 
     var SIZE_SNAKE = 8;
 
+      // Declaring the directions constant
+    var DIRECTION = {
+    UP: 'Up',
+    DOWN: 'Down',
+    LEFT: 'Left',
+    RIGHT: 'Right'
+    };
+
     function SnakeBody (initialX,initialY,previous) {
         this.next = null;
         this.prev = previous;

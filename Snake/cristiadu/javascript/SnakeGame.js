@@ -17,25 +17,25 @@
  	
     SnakeGame.prototype.update = function () {
     	this.checkInput();
-    	if(!gameOver)
+    	if(!this.gameOver)
     	{
-			food.update();
-    		snake.update();
+			this.food.update();
+    		this.snake.update();
     	}
     };
 
     SnakeGame.prototype.draw = function (ctx,dt) {
         ctx.fillStyle = '#000';
         ctx.fillRect( 0, 0, this.wid, this.hei);
-    	food.draw(ctx,dt);
-		snake.draw(ctx,dt);
+    	this.food.draw(ctx,dt);
+		this.snake.draw(ctx,dt);
     };
 
   	SnakeGame.prototype.checkInput = function () {
     	// Process inputs
     	var direction = null;
 
-		if(!gameOver)
+		if(!this.gameOver)
 		{
 			if(Keyboard.isDown(ARROWS_KEYCODES.left))
                 direction = DIRECTION.LEFT;
@@ -48,7 +48,7 @@
 
 			
 			if(direction != null)
-	    		snake.changeDirection(direction);
+	    		this.snake.changeDirection(direction);
 		}
 		else if(Keyboard.isDown(27))
 		{
@@ -63,8 +63,8 @@
 
     SnakeGame.prototype.init = function () {
     	this.gameOver = false;
-    	snake.init();
-    	food.init();
+    	this.snake.init();
+    	this.food.init();
     };
 
     SnakeGame.prototype.gameIsOver = function () 
