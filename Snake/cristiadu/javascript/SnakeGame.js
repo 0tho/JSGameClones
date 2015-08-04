@@ -22,6 +22,9 @@ SnakeGame.prototype.draw = function (ctx,dt) {
     ctx.fillRect( 0, 0, this.width, this.height);
 	this.food.draw(ctx,dt);
 	this.snake.draw(ctx,dt);
+
+	if(this.gameOver)
+		ctx.fillText("Game Over, press ESC if you want to restart.",25,25);
 };
 
 SnakeGame.prototype.checkInput = function () {
