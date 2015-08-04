@@ -1,4 +1,3 @@
-
 function SnakeBody (initialX,initialY,previous) {
     this.next = null;
     this.prev = previous;

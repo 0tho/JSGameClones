@@ -1,4 +1,3 @@
-
 function SnakeGame (w,h) {
     this.width = w;
     this.height = h;
@@ -25,24 +24,24 @@ SnakeGame.prototype.draw = function (ctx,dt) {
 	this.snake.draw(ctx,dt);
 };
 
-	SnakeGame.prototype.checkInput = function () {
+SnakeGame.prototype.checkInput = function () {
 	// Process inputs
 	var direction = null;
 
 	if(!this.gameOver)
 	{
 
-		if(Keyboard.isDown(ARROWS_KEYCODES.left))
-            direction = DIRECTION.LEFT;
-		else if(Keyboard.isDown(ARROWS_KEYCODES.right))
+		if(Keyboard.isDown(ARROWS_KEYCODES.left) && (this.snake.direction != DIRECTION.RIGHT))
+	        direction = DIRECTION.LEFT;
+		else if(Keyboard.isDown(ARROWS_KEYCODES.right)  && (this.snake.direction != DIRECTION.LEFT))
 			direction = DIRECTION.RIGHT;
-		else if(Keyboard.isDown(ARROWS_KEYCODES.down))
+		else if(Keyboard.isDown(ARROWS_KEYCODES.down)  && (this.snake.direction != DIRECTION.UP))
 			direction = DIRECTION.DOWN;
-		else if(Keyboard.isDown(ARROWS_KEYCODES.up))
+		else if(Keyboard.isDown(ARROWS_KEYCODES.up)  && (this.snake.direction != DIRECTION.DOWN))
 			direction = DIRECTION.UP;
 
 		if(direction != null)
-    		this.snake.changeDirection(direction);
+			this.snake.changeDirection(direction);
 	}
 	else if(Keyboard.isDown(27))
 	{
@@ -50,8 +49,6 @@ SnakeGame.prototype.draw = function (ctx,dt) {
 		// Reset game
 		this.init();
 	}
-	
-
 
 };
 

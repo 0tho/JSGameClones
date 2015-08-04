@@ -1,5 +1,3 @@
-
-
 function Food () {
 	this.X = 0;
 	this.Y = 0;
@@ -27,16 +25,36 @@ Food.prototype.generateFood = function()
 {
     var randomX,randomY;
     var inSnake = true;
+    var part = game.snake;
+    var auxBool;
+
 
     while(inSnake)
     {
         // Implement that later
         randomX = getRandomInt(0,game.width); 
         randomY = getRandomInt(0,game.height);
+        auxBool = true; 
+        console.log('inSnake loop');
+        if (part.X < randomX + FOOD_SIZE &&  part.X + SIZE_SNAKE > randomX &&  part.Y < randomY + FOOD_SIZE && SIZE_SNAKE + part.Y > randomY)
+            auxBool = false;
+        else
+            part = part.body;
+        
+        while((part != null)&&(auxBool))
+        {
+            console.log('inner loop');
+            if (part.X < randomX + FOOD_SIZE &&  part.X + SIZE_SNAKE > randomX &&  part.Y < randomY + FOOD_SIZE && SIZE_SNAKE + part.Y > randomY)
+                auxBool = false;
+            else
+                part = part.next;
+                        
+        }
 
-        inSnake = false;
+        if(part == null)
+            inSnake = false;
     }
-
+    
     this.X = randomX;
     this.Y = randomY;
     this.elapsedTime = 0;
