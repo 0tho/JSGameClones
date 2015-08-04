@@ -31,7 +31,6 @@ Food.prototype.generateFood = function()
 
     while(inSnake)
     {
-        // Implement that later
         randomX = getRandomInt(0,game.width); 
         randomY = getRandomInt(0,game.height);
         auxBool = true; 
