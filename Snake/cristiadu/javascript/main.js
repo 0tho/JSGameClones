@@ -1,16 +1,6 @@
 (function () {
-
-	// Declaring the directions constant
-	var DIRECTION = {
-	UP: 'Up',
-	DOWN: 'Down',
-	LEFT: 'Left',
-	RIGHT: 'Right'
-	};
-
-    var
-    game = new SnakeGame(),
-    cfg = {
+    window.game = new SnakeGame(800,800);
+    var cfg = {
         width: 800,
         height: 800,
         fps: 60
@@ -20,4 +10,5 @@
     game.init();
     gameMachine.start();
 
+   
 })();
