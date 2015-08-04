@@ -31,6 +31,9 @@ SnakeHead.prototype.update = function()
     }
 
     this.body.update();
+
+    if(this.isEatingFood())
+        this.body.increase();
 };
 
 SnakeHead.prototype.draw = function(ctx,dt)
@@ -52,7 +55,24 @@ SnakeHead.prototype.init = function()
     this.body.increase();
 };
 
-SnakeHead.prototype.checkCollision = function(){};
+SnakeHead.prototype.checkCollision = function()
+{
+    // Body collision
+    var part = this.body;
+    while(part != null)
+    {
+        if (this.X < part.X + SIZE_SNAKE && this.X + SIZE_SNAKE > part.X && this.Y < part.Y + SIZE_SNAKE && SIZE_SNAKE + this.Y > part.Y) {
+            game.gameIsOver();
+            break;
+        }
+
+        part = part.next();
+    }
+
+
+    // Wall collision
+      
+};
 
 SnakeHead.prototype.changeDirection = function(updatedDirection)
 { 
