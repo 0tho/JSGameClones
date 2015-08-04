@@ -69,8 +69,6 @@ SnakeBody.prototype.increase = function()
                 this.next = new SnakeBody(this.X - SIZE_SNAKE,this.Y,this);
             break;
         }
-
-        console.log("im here");
     }
         
 

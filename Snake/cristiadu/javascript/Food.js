@@ -26,25 +26,22 @@ Food.prototype.generateFood = function()
     var randomX,randomY;
     var inSnake = true;
     var part = game.snake;
-    var auxBool;
-
+  
 
     while(inSnake)
     {
         randomX = getRandomInt(0,game.width); 
         randomY = getRandomInt(0,game.height);
         auxBool = true; 
-        console.log('inSnake loop');
         if (part.X < randomX + FOOD_SIZE &&  part.X + SIZE_SNAKE > randomX &&  part.Y < randomY + FOOD_SIZE && SIZE_SNAKE + part.Y > randomY)
-            auxBool = false;
+            continue;
         else
             part = part.body;
         
-        while((part != null)&&(auxBool))
+        while(part != null)
         {
-            console.log('inner loop');
             if (part.X < randomX + FOOD_SIZE &&  part.X + SIZE_SNAKE > randomX &&  part.Y < randomY + FOOD_SIZE && SIZE_SNAKE + part.Y > randomY)
-                auxBool = false;
+                break;
             else
                 part = part.next;
                         
