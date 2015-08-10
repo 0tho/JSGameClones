@@ -60,10 +60,10 @@ SnakeBody.prototype.increase = function()
                 this.next = new SnakeBody(this.X + SIZE_SNAKE,this.Y,this);
             break;
             case DIRECTION.UP:
-                this.next = new SnakeBody(this.X,this.Y - SIZE_SNAKE,this);
+                this.next = new SnakeBody(this.X,this.Y + SIZE_SNAKE,this);
             break;
             case DIRECTION.DOWN:
-                this.next = new SnakeBody(this.X,this.Y + SIZE_SNAKE,this);
+                this.next = new SnakeBody(this.X,this.Y - SIZE_SNAKE,this);
             break;
             default:
                 this.next = new SnakeBody(this.X - SIZE_SNAKE,this.Y,this);
