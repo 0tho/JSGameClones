@@ -13,7 +13,7 @@ SnakeBody.prototype.update = function()
     // Next element will get direction from before the update
     this.lastDirection = this.direction;
     this.direction = this.prev.lastDirection;
-
+    
     switch(this.direction)
     {
         case DIRECTION.RIGHT:
