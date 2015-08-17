@@ -11,7 +11,7 @@ function BreakoutGame (w,h) {
 	
 BreakoutGame.prototype.update = function () {
 
-	if(this.activeBlocks > 0)
+	if((this.activeBlocks > 0) && (this.lives > 0))
 	{
 		this.ball.update();
 		this.playerPaddle.update();
@@ -38,6 +38,8 @@ BreakoutGame.prototype.draw = function (ctx,dt) {
 
 	if(this.activeBlocks <= 0)
 		ctx.fillText("You won!",25,25);
+	else if(this.lives <= 0)
+		ctx.fillText("You lost!",25,25);
 	
 };
 
