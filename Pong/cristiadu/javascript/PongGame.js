@@ -2,7 +2,7 @@ function PongGame (w,h) {
     this.width = w;
     this.height = h;
     this.player1Paddle = new Paddle(POSITION.LEFT,PLAYER_TYPE.HUMAN);
-    this.player2Paddle = new Paddle(POSITION.RIGHT,PLAYER_TYPE.AI);
+    this.player2Paddle = new Paddle(POSITION.RIGHT,PLAYER_TYPE.HUMAN2);
     this.ball = new Ball();
 }
 
