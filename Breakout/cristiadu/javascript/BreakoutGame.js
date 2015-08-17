@@ -98,7 +98,7 @@ BreakoutGame.prototype.init = function () {
 	}
 
 	this.activeBlocks = NUM_LINES_BLOCKS * (game.width/SIZE_BLOCK);
-	console.log(this.blocks);
+
 };
 
 
