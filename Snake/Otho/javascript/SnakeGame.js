@@ -1,24 +1,24 @@
 (function () {
 
-    function SnakeGame () {
+    function Game () {
 
 
     }
 
-    SnakeGame.prototype.width = 800;
-    SnakeGame.prototype.height = 600;
-    SnakeGame.prototype.tileSize = 10;
-    SnakeGame.prototype.tsw = SnakeGame.prototype.width/SnakeGame.prototype.tileSize;
-    SnakeGame.prototype.tsh = SnakeGame.prototype.height/SnakeGame.prototype.tileSize;
+    Game.prototype.width = 800;
+    Game.prototype.height = 600;
+    Game.prototype.tileSize = 10;
+    Game.prototype.tsw = Game.prototype.width/Game.prototype.tileSize;
+    Game.prototype.tsh = Game.prototype.height/Game.prototype.tileSize;
 
-    SnakeGame.prototype.start = function () {
+    Game.prototype.start = function () {
         this.parts = [];
 
-        this.fruit = new Fruit();
+        this.fruit = new Snake.Fruit();
         this.fruitsEated = 0;
         this.newPart = false;
 
-        this.snakeHead = new SnakeHead();
+        this.snakeHead = new Snake.Head();
         this.lasPart = this.snakeHead;
 
         this.fruit.newRandomPos( this );
@@ -28,7 +28,7 @@
         this.newSnakePart();
     };
 
-    SnakeGame.prototype.update = function () {
+    Game.prototype.update = function () {
         this.snakeHead.update( this );
 
         if( this.parts.length ) {
@@ -47,7 +47,7 @@
         }
     };
 
-    SnakeGame.prototype.draw = function ( ctx, dt) {
+    Game.prototype.draw = function ( ctx, dt) {
         //Draw black back screen
         ctx.fillStyle = '#000';
         ctx.fillRect( 0, 0, 800, 600 );
@@ -64,8 +64,8 @@
         }
     };
 
-    SnakeGame.prototype.newSnakePart = function () {
-        var part = new SnakePart();
+    Game.prototype.newSnakePart = function () {
+        var part = new Snake.Part();
 
         part.x = this.lasPart.x;
         part.y = this.lasPart.y;
@@ -75,15 +75,16 @@
         this.lasPart = part;
     };
 
-    SnakeGame.prototype.onSnakeCollideWithFruit = function ( event ) {
+    Game.prototype.onSnakeCollideWithFruit = function ( event ) {
         this.fruitsEated++;
         this.fruit.newRandomPos( this );
         this.newSnakePart();
     };
-    SnakeGame.prototype.onSnakeCollideWithSnake = function ( event ) {
+    Game.prototype.onSnakeCollideWithSnake = function ( event ) {
         alert("GAME OVER");
         this.start();
     };
 
-    window.SnakeGame = SnakeGame;
+    window.Snake = window.Snake || {};
+    window.Snake.Game = Game;
 })();

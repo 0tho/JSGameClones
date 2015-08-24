@@ -10,6 +10,6 @@
         return Math.floor(Math.random() * dif) + min;
     };
 
-    window.Snake = window.Snake || {};
-    window.Snake.Util = new Util();
+    window.Pong = window.Pong || {};
+    window.Pong.Util = new Util();
 })();

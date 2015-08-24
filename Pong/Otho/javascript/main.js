@@ -1,7 +1,7 @@
 (function () {
 
     var
-    game = new Snake.Game(),
+    game = new Pong.Game(),
     cfg = {
         width: 800,
         height: 600,
